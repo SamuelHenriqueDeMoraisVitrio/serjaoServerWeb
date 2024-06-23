@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Um site para documentar o framework SerjãoBerranteiroServer, HTML, CSS, JavaScript e lua.">
-    <meta name="keywords" content="HTML, CSS, JavaScript, lua, api, programação web">
+    <meta name="description" content="A website to document the SerjãoBerranteiroServer framework, HTML, CSS, JavaScript and lua.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, lua, api, make web">
     <meta name="author" content="Samuel Henrique">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta property="og:title" content="Framework lua">
-    <meta property="og:description" content="Framework para lua para criação de api e aplicativos desktops.">
+    <meta property="og:description" content="Lua framework for creating APIs and desktop applications.">
     <!--
     <meta property="og:image" content="https://www.meusite.com/img/logo.png">
     <meta property="og:url" content="https://www.meusite.com">
@@ -15,7 +15,7 @@
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Framework lua">
-    <meta name="twitter:description" content="Framework para lua para criação de api e aplicativos desktops.">
+    <meta name="twitter:description" content="Lua framework for creating APIs and desktop applications.">
     <!--
     <meta name="twitter:image" content="https://www.meusite.com/img/logo.png">
     -->
@@ -24,8 +24,972 @@
 <body>
 
     <h1>Framework Serjão Berranteiro Server</h1>
+    <h1 id="serj-o-berranteiro-server-documentation">Serjão Berranteiro Server Documentation</h1>
+    <h2 id="languages">Languages</h2>
+    <p><a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/language/Portugu%C3%AAsBR.md">Português</a></p>
+    <h2 id="a-framework-to-develop-apis-and-desktop-apps">A framework to Develop APIs and Desktop Apps</h2>
+    <p>Serjão Berranteiro Server is a library for the Lua language designed to develop APIs and desktop applications in a simple and intuitive way, maintaining flexibility in configuring the server according to your preferences.</p>
+    <p>Bringing many functionalities such as the choice of a single process or multiple processes, an HTML engine, working with JSON, among others.</p>
+    <h2 id="versions">Versions</h2>
+    <ul>
+        <li>It is recommended to always use the latest published version.</li>
+    </ul>
+    <hr>
+    <h2 id="how-to-use-the-lib-">How to use the lib?</h2>
+    <h3 id="the-simplest-way-to-use-the-lib-in-your-code-is-">The simplest way to use the lib in your code is:</h3>
+    <p>Go to the repository <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer">SerjaoBerranteiroServer</a> and download the latest .zip file posted in <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/releases">Realeses/Lançamentos</a>.</p>
+    <p>Place the unzipped file inside the directory where your .lua file is located. After that, finish by calling a requirement within your Lua code.</p>
+    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"Path to serjao_berranteiro directory/serjao_berranteiro"</span>)
+</code></pre>
+    <p>Now you can use all the functionalities of the SerjaoBerranteiroServer.</p>
+    <p>A simple way to install this dll for your project is:</p>
+    <ul>
+        <li>First, in the terminal, enter your project directory.</li>
+        <li>Then copy this command:<pre><code class="lang-bash">curl -L -o serjao_berranteiro.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/SamuelHenriqueDeMoraisVitrio/</span>SerjaoBerranteiroServer<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/V2/</span>serjao_server.zip &amp;&amp; unzip serjao_berranteiro.zip &amp;&amp; rm serjao_berranteiro.zip
+</code></pre>
+        </li>
+    </ul>
+    <hr>
+    <h2 id="starting-a-server">Starting a server</h2>
+    <p>With this functionality you can develop your own server normally used for developing &quot;APIs&quot;.</p>
+    <h3 id="the-server-function-allows-you-to-start-your-server">The server function allows you to start your server</h3>
+    <h4 id="parameters-">Parameters:</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>Port number</th>
+            <th>Functionality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Parameter 1</td>
+            <td>Starting port</td>
+        </tr>
+        <tr>
+            <td>Parameter 2</td>
+            <td>Ending port</td>
+        </tr>
+        <tr>
+            <td>Parameter 3</td>
+            <td>Callback</td>
+        </tr>
+        </tbody>
+    </table>
+    <h5 id="or">OR</h5>
+    <table>
+        <thead>
+        <tr>
+            <th>Port number</th>
+            <th>Functionality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Parameter 1</td>
+            <td>Starting port</td>
+        </tr>
+        <tr>
+            <td>Parameter 2</td>
+            <td>Callback</td>
+        </tr>
+        </tbody>
+    </table>
+    <h5 id="ports">Ports</h5>
+    <p>Before starting the process, an automatic check of the starting port is performed.
+        If it does not work,
+        the lib will increment a number and test again until it works or until the port is greater than the ending port.</p>
+    <h5 id="callback">Callback</h5>
+    <p>The third parameter will call the function you created that will handle your server.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
+
+  <span class="hljs-keyword">return</span> serjao.send_text(<span class="hljs-string">"Hello Word"</span>, <span class="hljs-number">200</span>)
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">5000</span>, whatever_name)
+</code></pre>
+    <p>By placing only the first port and the callback in the second parameter, you are telling the server that it only wants to run if it is on that port.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Word"</span>, <span class="hljs-number">400</span>
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, whatever_name)
+</code></pre>
+    <hr>
+    <h2 id="starting-a-desktop-">Starting a &#39;desktop&#39;</h2>
+    <p>With desktop functionality you can develop your own local application, such as “VScode” or “Postman”.</p>
+    <h3 id="the-desktop-function-allows-you-to-start-the-appserver">The desktop function allows you to start the appServer</h3>
+    <h4 id="parameters-">Parameters:</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>Port number</th>
+            <th>Functionality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Parameter 1</td>
+            <td>Browser</td>
+        </tr>
+        <tr>
+            <td>Parameter 2</td>
+            <td>Callback</td>
+        </tr>
+        <tr>
+            <td>Parameter 3</td>
+            <td>resolution x</td>
+        </tr>
+        <tr>
+            <td>Parameter 4</td>
+            <td>resolution y</td>
+        </tr>
+        </tbody>
+    </table>
+    <h5 id="calback">Calback</h5>
+    <p>The third parameter will call the function you created that will handle your server.</p>
+    <h5 id="resolutions">resolutions</h5>
+    <p>These parameters allow you to choose the resolution of your desktop.
+        Therefore, if you stop placing these parameters, it will be full screen by default,
+        but if you only respond to the x-axis, both axes will have that value.
+        Now, if you put nil on x and a number on the second, you will define a value for the axis.
+        Y and the x-axis will be 800 by default.</p>
+    <h5 id="browser-">browser:</h5>
+    <p>This parameter requires a string of your preferred browser.
+        PS: Recommended to install chromium-browser</p>
+    <h6 id="apt">APT</h6>
+    <pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> chromium-browser
+</code></pre>
+    <h6 id="dnf">DNF</h6>
+    <pre><code class="lang-bash">sudo dnf <span class="hljs-keyword">install</span> chromium-browser
+</code></pre>
+    <h5 id="calback-">Calback:</h5>
+    <p>This parameter works the same way as in server.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> srj = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Word"</span>
+
+<span class="hljs-keyword">end</span>
+
+srj.desktop(<span class="hljs-string">"chromium"</span>, whatever_name, <span class="hljs-number">800</span>, <span class="hljs-number">400</span>)
+</code></pre>
+    <hr>
+    <h2 id="request">request</h2>
+    <p>In the function you created, you can add a parameter that will handle the requests in your code.</p>
+    <p>The requests are:</p>
+    <table>
+        <thead>
+        <tr>
+            <th>requests</th>
+            <th>return</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>URL</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>METHOD</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>ROUTE</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>PARAMS</td>
+            <td>values or table</td>
+        </tr>
+        <tr>
+            <td>HEADER</td>
+            <td>number or string</td>
+        </tr>
+        <tr>
+            <td>read_json_body</td>
+            <td>table json</td>
+        </tr>
+        <tr>
+            <td>read_body</td>
+            <td>file/binary</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3 id="url-method-route">URL, METHOD, ROUTE</h3>
+    <p>These three requests are simple:</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> sla = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nome_Que_quiser</span><span class="hljs-params">(request)</span></span>
+
+  <span class="hljs-keyword">local</span> url = request.url
+  <span class="hljs-keyword">local</span> method = request.method
+  <span class="hljs-keyword">local</span> route = request.route
+
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"url: "</span>, url, <span class="hljs-string">"\nmethod: "</span>, method, <span class="hljs-string">"\nroute: "</span>, route, <span class="hljs-string">"\n\n"</span>)
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Word"</span>
+
+<span class="hljs-keyword">end</span>
+
+sla.desktop(<span class="hljs-string">"chromium"</span>, nome_Que_quiser, <span class="hljs-keyword">nil</span>, <span class="hljs-number">400</span>)
+</code></pre>
+    <h3 id="params-headers">PARAMS, HEADERS</h3>
+    <p>These requests can be used in two ways:
+        The first is by key, where you can search for a header or param by the key name.
+        The second way is by index, returning a table that can access the key and value.
+        PS: Remember that if you work with an index, Lua starts the index at number 1.</p>
+    <pre><code class="lang-lua">local srj = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+local function main_server(request)
+
+  local tabela_do_header = request.header[<span class="hljs-number">1</span>]
+  local value_do_param = request.params[<span class="hljs-string">"nsei"</span>]
+
+  print(<span class="hljs-string">"<span class="hljs-subst">\n</span><span class="hljs-subst">\t</span>Header:<span class="hljs-subst">\n</span><span class="hljs-subst">\t</span>key: "</span>, tabela_do_header.<span class="hljs-type">key</span>, <span class="hljs-string">"<span class="hljs-subst">\n</span><span class="hljs-subst">\t</span>value: "</span>, tabela_do_header.value)
+
+  print(<span class="hljs-string">"<span class="hljs-subst">\n</span><span class="hljs-subst">\t</span>value de param: "</span>, value_do_param)
+
+  return <span class="hljs-string">"Hello Word"</span>
+
+end
+
+srj.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3000</span>, main_server)
+</code></pre>
+    <p>You can also look at the size of the header or params, in case you want to interact with them.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> num = <span class="hljs-number">0</span>
+set_server.single_process = <span class="hljs-keyword">true</span>;
 
 
+<span class="hljs-comment">---@param request Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span></span>
+
+  <span class="hljs-built_in">print</span>(request.header.size)
+  <span class="hljs-built_in">print</span>(request.params.size)
+
+  <span class="hljs-keyword">if</span> request.route == <span class="hljs-string">"/teste"</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-keyword">return</span> html(body(h1(<span class="hljs-string">"aaaaa"</span>)))
+  <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">if</span> request.route == <span class="hljs-string">"/a"</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-keyword">local</span> v = <span class="hljs-keyword">nil</span> .. <span class="hljs-number">10</span>
+  <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">return</span> {
+    nome=<span class="hljs-string">"mateus"</span>
+  },<span class="hljs-number">404</span>
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">5000</span>, teste)
+<span class="hljs-comment">--serjao.desktop("chromium", teste, 800, 400)</span>
+</code></pre>
+    <h3 id="read_json_body">read_json_body</h3>
+    <p>The read_json_body function reads the body and returns a table of this JSON. This function has only one parameter, which is the maximum size in bytes for security.
+        The JSON I will use as an example is this:</p>
+    <pre><code class="lang-json">{
+    <span class="hljs-attr">"json"</span>: <span class="hljs-string">"jsonV4.0"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"samuel"</span>,
+    <span class="hljs-attr">"name2"</span>: <span class="hljs-string">"henrique"</span>
+}
+</code></pre>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(request)</span></span>
+
+  <span class="hljs-keyword">local</span> json = request.read_json_body(<span class="hljs-number">10000</span>)
+
+  <span class="hljs-built_in">print</span>(json.name)
+
+  <span class="hljs-keyword">return</span> serjao.send_json(json, <span class="hljs-number">200</span>)
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3000</span>, main_server)
+</code></pre>
+    <h3 id="read_body">read_body</h3>
+    <p>The read_body function also reads the body.</p>
+    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-built_in">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span>(<span class="hljs-title">request</span>)</span>
+
+  <span class="hljs-built_in">local</span> <span class="hljs-built_in">file</span> = request.read_body(<span class="hljs-number">1000000</span>)
+
+  io.<span class="hljs-built_in">open</span>(<span class="hljs-string">"teste.png"</span>, <span class="hljs-string">"w"</span>):<span class="hljs-built_in">write</span>(<span class="hljs-built_in">file</span>)
+
+  <span class="hljs-literal">return</span> <span class="hljs-string">"Deu certo"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">end</span>
+
+<span class="hljs-title">serjao</span>.<span class="hljs-title">server</span>(<span class="hljs-title">3000</span>, <span class="hljs-title">3003</span>, <span class="hljs-title">main_server</span>)</span>
+</code></pre>
+    <hr>
+    <h2 id="notices">Notices</h2>
+    <ul>
+        <li>To make it easier to use, put this line &quot;---@param request Request&quot; in your code before the server loop function.</li>
+    </ul>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+
+set_server.single_process = <span class="hljs-keyword">true</span>
+
+
+<span class="hljs-comment">---@param request Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span></span>
+      <span class="hljs-keyword">return</span> serjao.send_text(<span class="hljs-string">"aaa"</span>,<span class="hljs-number">200</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>,<span class="hljs-number">4000</span>,teste);
+</code></pre>
+    <hr>
+    <h2 id="response">Response</h2>
+    <p>The responses are functions that return a message to the body of your server.
+        PS:.All responses, no need to enter the status_code as it defaults to 200.</p>
+    <h3 id="responses-">responses:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Return to the body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>send_text</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>send_file</td>
+            <td>file</td>
+        </tr>
+        <tr>
+            <td>send_json</td>
+            <td>json</td>
+        </tr>
+        <tr>
+            <td>send_raw</td>
+            <td>anyway</td>
+        </tr>
+        <tr>
+            <td>send_json_string</td>
+            <td>json</td>
+        </tr>
+        <tr>
+            <td>send_html</td>
+            <td>html</td>
+        </tr>
+        <tr>
+            <td>&quot;&quot;</td>
+            <td>text without status code</td>
+        </tr>
+        <tr>
+            <td>kill</td>
+            <td>kiil to server</td>
+        </tr>
+        <tr>
+            <td>{ }</td>
+            <td>json</td>
+        </tr>
+        <tr>
+            <td>fun()</td>
+            <td>html</td>
+        </tr>
+        </tbody>
+    </table>
+    <h4 id="minimum-responses">Minimum responses</h4>
+    <p>In all responses that do not use the send function, such as &#39;html&#39;, &#39;string or &#39;json&#39;, you have the option of placing &#39;status_code&#39; as a second return. If you do not enter the second return, it will be taken as default 200.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-comment">---@param rq Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
+
+  <span class="hljs-keyword">if</span> rq.route == <span class="hljs-string">"/or"</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-keyword">return</span> html(body(h1(<span class="hljs-string">"Hello Word"</span>))), <span class="hljs-number">500</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-keyword">return</span> {name = <span class="hljs-string">"Samuel"</span>, from = <span class="hljs-string">"Brazil"</span>, age = <span class="hljs-number">18</span>}, <span class="hljs-number">404</span>
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_text">send_text</h3>
+    <p>This function is used to send a message with the status code of this return.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+
+
+  <span class="hljs-keyword">return</span> serjao.send_text(<span class="hljs-string">"Hello Word"</span>, <span class="hljs-number">200</span>)
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <p>You can do it like this too. The only change is that there is no option to choose the status_code, as it defaults to 200.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Word"</span>
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_json_string">send_json_string</h3>
+    <p>This function is used to send a JSON to the body via a string.</p>
+    <pre><code class="lang-lua">local serjao = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+local function main_server()
+
+
+  local json = <span class="hljs-string">"{<span class="hljs-subst">\"</span>name<span class="hljs-subst">\"</span> = <span class="hljs-subst">\"</span>serjão<span class="hljs-subst">\"</span>,<span class="hljs-subst">\"</span>idade<span class="hljs-subst">\"</span> = 20}"</span>
+
+  return serjao.send_json_string(json, <span class="hljs-number">200</span>)
+
+end
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_html">send_html</h3>
+    <p>This function is used to send HTML to the body via a string.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
+
+  <span class="hljs-keyword">if</span> rq.route == <span class="hljs-string">"/or"</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-keyword">local</span> htmlOR = html(head(title(<span class="hljs-string">"Hello"</span>)), body(h1(<span class="hljs-string">"Hello Word"</span>)))
+
+    <span class="hljs-keyword">return</span> htmlOR
+  <span class="hljs-keyword">end</span>
+
+
+  <span class="hljs-keyword">local</span> html = <span class="hljs-string">"&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;"</span>
+
+  <span class="hljs-keyword">return</span> serjao.send_html(html, <span class="hljs-number">200</span>)
+
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_file">send_file</h3>
+    <p>This function is used to send a file to the body.
+        The first parameter is the file path, and the third parameter is optional but recommended, which is the content type of your file.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span> serjao.send_file(<span class="hljs-string">"Captura de tela de 2024-06-01 14-38-38.png"</span>, <span class="hljs-number">200</span>, <span class="hljs-string">"image/png"</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_json">send_json</h3>
+    <p>This function sends a JSON to the body by receiving a JSON table.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
+  <span class="hljs-keyword">local</span> json = {
+    nome = <span class="hljs-string">"samuel"</span>,
+    sla = <span class="hljs-string">"NULL"</span>,
+    idade = <span class="hljs-number">20</span>
+  }
+
+  <span class="hljs-keyword">if</span> rq.route == <span class="hljs-string">"/or"</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-keyword">return</span> json
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-keyword">return</span> serjao.send_json(json, <span class="hljs-number">200</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, main_server)
+</code></pre>
+    <p>This function also accepts strings, booleans, and numbers.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+
+  <span class="hljs-keyword">return</span> serjao.send_json(<span class="hljs-string">"Hello Word"</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="send_raw">send_raw</h3>
+    <p>This function sends anything, like a PNG, binary, or zip.
+        The second parameter is the content type.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> sla = <span class="hljs-built_in">io</span>.open(<span class="hljs-string">"Captura de tela de 2024-06-01 14-38-38.png"</span>, <span class="hljs-string">"rb"</span>)
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+
+  <span class="hljs-keyword">return</span> serjao.send_raw(sla, <span class="hljs-string">"image/png"</span>, <span class="hljs-number">200</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="kill">kill</h3>
+    <p>This function only works in a single process, it kills the server.</p>
+    <pre><code class="lang-lua">local serjao = require("serjao_berranteiro/serjao_berranteiro")
+
+
+set_server.single_process = true
+
+---@param request Request
+local function teste(request)
+
+  if "/kill" == request.route then
+    serjao.kill()
+  end
+
+  local html = "<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">en</span>\"&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">UTF-8</span>\"&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">viewport</span>\" <span class="hljs-attr">content</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">width</span>=<span class="hljs-string">device-width,</span> <span class="hljs-attr">initial-scale</span>=<span class="hljs-string">1.0\</span>"&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Kill Server Button<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"><span class="hljs-selector-class">.custom-button</span>{<span class="hljs-attribute">background-color</span>:<span class="hljs-number">#ff0000</span>;<span class="hljs-attribute">border</span>:none;<span class="hljs-attribute">color</span>:white;<span class="hljs-attribute">padding</span>:<span class="hljs-number">15px</span> <span class="hljs-number">32px</span>;<span class="hljs-attribute">text-align</span>:center;<span class="hljs-attribute">text-decoration</span>:none;<span class="hljs-attribute">display</span>:inline-block;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">16px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">4px</span> <span class="hljs-number">2px</span>;<span class="hljs-attribute">cursor</span>:pointer;<span class="hljs-attribute">border-radius</span>:<span class="hljs-number">8px</span>;}</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">custom-button</span>\" <span class="hljs-attr">id</span>=<span class="hljs-string">\</span>"<span class="hljs-attr">killButton</span>\"&gt;</span>Kill Server<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'killButton'</span>).addEventListener(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{fetch(<span class="hljs-string">'/kill'</span>,{<span class="hljs-attr">method</span>:<span class="hljs-string">'GET'</span>});});</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>"
+
+  return serjao.send_html(html, 200)
+end
+
+serjao.desktop("chromium", teste)
+</code></pre>
+    <hr>
+    <h2 id="set_server">set_server</h2>
+    <p>This set_server is used to make pre-configurations on your server.</p>
+    <h3 id="todos-set_servers">Todos set_servers</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>type</th>
+            <th>default</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>nullterminator</td>
+            <td>string</td>
+            <td>&quot;NULL&quot;</td>
+        </tr>
+        <tr>
+            <td>single_process</td>
+            <td>bool</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>allow_cors</td>
+            <td>bool</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>use_folder</td>
+            <td>bool</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>static_folder</td>
+            <td>string</td>
+            <td>&quot;static&quot;</td>
+        </tr>
+        <tr>
+            <td>function_timeout</td>
+            <td>number</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>client_timeout</td>
+            <td>number</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>max_queue</td>
+            <td>number</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>max_request</td>
+            <td>number</td>
+            <td>1000</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3 id="nullterminator">nullterminator</h3>
+    <p>This config is used to set the null string of the JSON</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+set_server.nullterminator = <span class="hljs-string">"nil"</span>
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">local</span> json = {
+    nome = <span class="hljs-string">"samuel"</span>,
+    sla = <span class="hljs-string">"nil"</span>,
+    idade = <span class="hljs-number">20</span>
+  }
+
+  <span class="hljs-keyword">return</span> serjao.send_json(json, <span class="hljs-number">200</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="single_process">single_process</h3>
+    <p>This config determines whether the <strong>&quot;server&quot;</strong> will be “single” or multiprocess.
+        PS: Essa configuração sempre estará ativa no modo “desktop”, mas de resto ele ficará desativado como padrão.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+set_server.single_process = <span class="hljs-keyword">true</span>
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"sla sla sla"</span>
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="use_folder">use_folder</h3>
+    <p>Sets a default folder.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+set_server.use_folder = <span class="hljs-keyword">false</span>
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"sla sla sla"</span>
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <h3 id="static_folder">static_folder</h3>
+    <p>Set the name of the default folder.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+set_server.use_folder = <span class="hljs-keyword">true</span>
+set_server.static_folder = <span class="hljs-string">"sla"</span>
+
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"sla sla sla"</span>
+<span class="hljs-keyword">end</span>
+
+serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
+</code></pre>
+    <hr>
+    <h2 id="html-engine">HTML engine</h2>
+    <p>There is an engine to work with HTML within the code itself.<br>We already have defined functions, several functions for each HTML feature that end with &quot;&lt;/...&gt;&quot;.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+            <th>name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>abbr</td>
+            <td>address</td>
+            <td>article</td>
+            <td>aside</td>
+            <td>audio</td>
+            <td>b</td>
+            <td>bdi</td>
+            <td>bdo</td>
+            <td>blockquote</td>
+            <td>body</td>
+        </tr>
+        <tr>
+            <td>button</td>
+            <td>canvas</td>
+            <td>caption</td>
+            <td>cite</td>
+            <td>code</td>
+            <td>colgroup</td>
+            <td>data</td>
+            <td>datalist</td>
+            <td>dd</td>
+            <td>del</td>
+        </tr>
+        <tr>
+            <td>details</td>
+            <td>dfn</td>
+            <td>dialog</td>
+            <td>div</td>
+            <td>dl</td>
+            <td>dt</td>
+            <td>em</td>
+            <td>fieldset</td>
+            <td>figcaption</td>
+            <td>figure</td>
+        </tr>
+        <tr>
+            <td>footer</td>
+            <td>form</td>
+            <td>h1</td>
+            <td>h2</td>
+            <td>h3</td>
+            <td>h4</td>
+            <td>h5</td>
+            <td>h6</td>
+            <td>head</td>
+            <td>header</td>
+        </tr>
+        <tr>
+            <td>hgroup</td>
+            <td>html</td>
+            <td>i</td>
+            <td>iframe</td>
+            <td>ins</td>
+            <td>kbd</td>
+            <td>label</td>
+            <td>legend</td>
+            <td>li</td>
+            <td>main</td>
+        </tr>
+        <tr>
+            <td>map</td>
+            <td>mark</td>
+            <td>meter</td>
+            <td>nav</td>
+            <td>noscript</td>
+            <td>object</td>
+            <td>ol</td>
+            <td>optgroup</td>
+            <td>option</td>
+            <td>output</td>
+        </tr>
+        <tr>
+            <td>p</td>
+            <td>picture</td>
+            <td>pre</td>
+            <td>progress</td>
+            <td>q</td>
+            <td>rp</td>
+            <td>rt</td>
+            <td>ruby</td>
+            <td>s</td>
+            <td>samp</td>
+        </tr>
+        <tr>
+            <td>script</td>
+            <td>section</td>
+            <td>select</td>
+            <td>slot</td>
+            <td>small</td>
+            <td>span</td>
+            <td>strong</td>
+            <td>style</td>
+            <td>sub</td>
+            <td>summary</td>
+        </tr>
+        <tr>
+            <td>sup</td>
+            <td>table</td>
+            <td>tbody</td>
+            <td>td</td>
+            <td>template</td>
+            <td>textarea</td>
+            <td>tfoot</td>
+            <td>th</td>
+            <td>thead</td>
+            <td>time</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>tr</td>
+            <td>u</td>
+            <td>ul</td>
+            <td>var</td>
+            <td>video</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+
+set_server.single_process = <span class="hljs-keyword">true</span>
+
+<span class="hljs-comment">---@param request Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span></span>
+
+  <span class="hljs-keyword">if</span> <span class="hljs-string">"/kill"</span> == request.route <span class="hljs-keyword">then</span>
+    serjao.kill()
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-keyword">local</span> html = html(
+                  head(
+                    title(<span class="hljs-string">"Hello Word"</span>),
+                    script()
+                  ),
+                  body(
+                    h1(<span class="hljs-string">"Hello Word"</span>),
+                    button(<span class="hljs-string">"Press here"</span>)
+                  )
+                )
+
+  <span class="hljs-keyword">return</span> serjao.send_html(html, <span class="hljs-number">200</span>)
+<span class="hljs-keyword">end</span>
+
+serjao.desktop(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-keyword">nil</span>, <span class="hljs-number">1000</span>)
+</code></pre>
+    <p>To print this html as a string, use the &quot;render()&quot; function.</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+
+set_server.single_process = <span class="hljs-keyword">true</span>
+
+<span class="hljs-comment">---@param request Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span></span>
+
+  <span class="hljs-keyword">if</span> <span class="hljs-string">"/kill"</span> == request.route <span class="hljs-keyword">then</span>
+    serjao.kill()
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-keyword">local</span> html = html(
+          head(
+                  title(<span class="hljs-string">"Hello Word"</span>),
+                  script()
+          ),
+          body(
+                  h1(<span class="hljs-string">"Hello Word"</span>),
+                  button(<span class="hljs-string">"Press here"</span>)
+          )
+  )
+
+  <span class="hljs-built_in">print</span>(html.render())
+  <span class="hljs-keyword">return</span> serjao.send_html(html)
+<span class="hljs-keyword">end</span>
+
+serjao.desktop(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-number">800</span>)
+</code></pre>
+    <p>To add raw code to HTML, use the &quot;fragment()&quot; function.</p>
+    <pre><code class="lang-lua">
+local serjao = require("serjao_berranteiro/serjao_berranteiro")
+
+local html = serjao.fragment("<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>",
+        html(
+                head(
+                        title("Hello Word"),
+                        script()
+                ),
+                body(
+                        h1("Hello Word"),
+                        button("Press here")
+                )
+        )
+)
+
+print(html.render())
+</code></pre>
+    <p>Now, if you want to put some HTML command that is not standard in the engine, it&#39;s simple:</p>
+    <pre><code class="lang-lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+
+set_server.single_process = <span class="hljs-keyword">true</span>
+
+---@param request Request
+local <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span>
+
+  <span class="hljs-title">if</span> "/<span class="hljs-title">kill</span>" == <span class="hljs-title">request</span>.<span class="hljs-title">route</span> <span class="hljs-title">then</span>
+    <span class="hljs-title">serjao</span>.<span class="hljs-title">kill</span><span class="hljs-params">()</span>
+  <span class="hljs-title">end</span>
+
+  <span class="hljs-title">local</span> <span class="hljs-title">html</span> = <span class="hljs-title">serjao</span>.<span class="hljs-title">fragment</span><span class="hljs-params">(<span class="hljs-string">"&lt;!DOCTYPE html&gt;"</span>,
+                  html<span class="hljs-params">(
+                    head<span class="hljs-params">(
+                          title<span class="hljs-params">(<span class="hljs-string">"Hello Word"</span>)</span>,
+                          script<span class="hljs-params">()</span>
+                    )</span>,
+                    body<span class="hljs-params">(
+                          h1<span class="hljs-params">(<span class="hljs-string">"Hello Word"</span>)</span>,
+                          button<span class="hljs-params">(<span class="hljs-string">"Press here"</span>)</span>,
+                          serjao.component<span class="hljs-params">(<span class="hljs-string">"h2"</span>, <span class="hljs-string">"hello"</span>)</span>
+                    )</span>
+                  )</span>
+                )</span>
+
+  <span class="hljs-title">print</span><span class="hljs-params">(html.render<span class="hljs-params">()</span>)</span>
+<span class="hljs-title">end</span>
+
+<span class="hljs-title">serjao</span>.<span class="hljs-title">desktop</span><span class="hljs-params">(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-number">800</span>)</span></span>
+</code></pre>
+    <p>And to put options inside these functions with id class etc. use objects.</p>
+    <pre><code class="lang-lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+local <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">()</span>
+
+        <span class="hljs-title">local</span> <span class="hljs-title">pagina</span>  =<span class="hljs-title">html</span><span class="hljs-params">(
+                body<span class="hljs-params">(
+                  h2<span class="hljs-params">({id=<span class="hljs-string">"teste"</span>,style={color=<span class="hljs-string">"yellow"</span>}},<span class="hljs-string">"aaa"</span>)</span>,
+                  h1<span class="hljs-params">({style={color=<span class="hljs-string">"blue"</span>}},<span class="hljs-string">"eai parsa"</span>)</span>
+                )</span>,
+                serjao.component<span class="hljs-params">(<span class="hljs-string">"h4"</span>)</span>,
+                serjao.fragment<span class="hljs-params">(<span class="hljs-string">"&lt;area&gt;"</span>)</span>
+        )</span>
+        <span class="hljs-title">return</span> <span class="hljs-title">serjao</span>.<span class="hljs-title">send_html</span><span class="hljs-params">(pagina,<span class="hljs-number">200</span>)</span>
+
+<span class="hljs-title">end</span>
+
+<span class="hljs-title">serjao</span>.<span class="hljs-title">server</span><span class="hljs-params">(<span class="hljs-number">3000</span>,<span class="hljs-number">4000</span>,teste)</span></span>
+</code></pre>
+    <hr>
+    <p>An example of using the engine:<br>PS:.In this example, htmx is being used</p>
+    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+
+<span class="hljs-keyword">local</span> num = <span class="hljs-number">0</span>
+
+<span class="hljs-comment">---@param request Request</span>
+<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">(request)</span></span>
+
+   <span class="hljs-keyword">if</span> request.route == <span class="hljs-string">"/increment"</span> <span class="hljs-keyword">then</span>
+        num = num +<span class="hljs-number">1</span>
+           <span class="hljs-keyword">return</span> serjao.send_html(h1(<span class="hljs-string">"o valor do numero é "</span>,<span class="hljs-built_in">tostring</span>(num),{id=<span class="hljs-string">"num"</span>}))
+
+   <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">local</span> html = serjao.fragment(<span class="hljs-string">"&lt;!DOCTYPE html&gt;"</span>,
+
+          html(
+                  head(
+                          title(<span class="hljs-string">"Hello Word"</span>),
+                          script({src=<span class="hljs-string">"https://unpkg.com/htmx.org@1.9.12"</span>})
+                  ),
+
+                  body(
+                          h1(<span class="hljs-string">"o valor do numero é "</span>,<span class="hljs-built_in">tostring</span>(num),{id=<span class="hljs-string">"num"</span>}),
+                          <span class="hljs-string">"&lt;br&gt;"</span>,
+                          button(<span class="hljs-string">"increment"</span>,{
+                                [<span class="hljs-string">"hx-trigger"</span>]=<span class="hljs-string">"click"</span>,
+                                [<span class="hljs-string">"hx-post"</span>]=<span class="hljs-string">"/increment"</span>,
+                                [<span class="hljs-string">"hx-target"</span>]=<span class="hljs-string">"#num"</span>,
+                                [<span class="hljs-string">"hx-swap"</span>]=<span class="hljs-string">"innerHTML"</span>
+                          })
+                  )
+          )
+  )
+    <span class="hljs-keyword">return</span> serjao.send_html(html.render())
+<span class="hljs-keyword">end</span>
+
+serjao.desktop(<span class="hljs-string">"chromium-browser"</span>, teste,<span class="hljs-number">600</span>)
+</code></pre>
+    <hr>
+    <p>init
+        <img src="Markdown/imgs/Captura de tela de 2024-06-11 23-56-53.png" alt="Example image"></p>
+    <p>Pressing the button 1 time
+        <img src="Markdown/imgs/Captura de tela de 2024-06-11 23-57-02.png" alt="Exemple image2"></p>
+    <p>Pressing the button a second time
+        <img src="Markdown/imgs/Captura de tela de 2024-06-11 23-57-14.png" alt="Exemple image3"></p>
+
+    <!--
+
+    -->
 
 </body>
 </html>
