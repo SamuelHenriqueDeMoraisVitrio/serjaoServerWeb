@@ -1,0 +1,46 @@
+CONFIG_LUA := config.mk
+
+-include $(CONFIG_LUA)
+
+LUA ?= main.lua
+RUN = echo "" && echo "" && echo "Compilação concluida. Executando..." && echo "" && lua $(LUA) && echo ""
+g ?= ""
+gt ?= ""
+
+teste: clear
+	@cd /home/samuel/Documentos/proc/serjaoServerWeb/back/ && $(RUN)
+	@echo ""
+
+#zip: clear
+#	@rm serjao_server.zip
+#	@zip -rv serjao_server.zip serjao_berranteiro
+#	@unzip -l serjao_server.zip
+#	@echo ""
+
+clear:
+	clear
+	@ls --color=always -alh
+	@echo ""
+
+#TRocar o nome de forma permanente do teste2.lua
+
+set_lua:
+	@echo LUA=$(LUA) > $(CONFIG_LUA)
+	@echo "$(LUA)"
+
+#Para mexer com git
+
+git: add
+	@git push
+	@echo ""
+
+add:
+ifeq ($(gt),)
+	@git add .
+	@git commit -m "$(g)"
+	@echo ""
+else
+	@git add .
+	@git commit -m "$(g)" -m "$(gt)"
+	@echo ""
+endif
