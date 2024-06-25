@@ -11,11 +11,14 @@ teste: clear
 	@cd /home/samuel/Documentos/proc/serjaoServerWeb/back/ && $(RUN)
 	@echo ""
 
-#zip: clear
-#	@rm serjao_server.zip
-#	@zip -rv serjao_server.zip serjao_berranteiro
-#	@unzip -l serjao_server.zip
-#	@echo ""
+zip: clear
+	@rm -f serjao_web.zip
+	@zip -r serjao_web.zip back front
+	@echo ""
+	@zip -T serjao_web.zip -v
+	@echo ""
+	@unzip -l serjao_web.zip
+	@echo ""
 
 clear:
 	clear
