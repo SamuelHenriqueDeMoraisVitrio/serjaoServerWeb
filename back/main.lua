@@ -10,7 +10,6 @@ local function main_server(rq)
     return serjao.send_file("../front/index.html", 200, "text/html")
   end
 
-  return serjao.send_file("../front/error.html", 404, "text/html")
 end
 
 serjao.server(3000, main_server)
