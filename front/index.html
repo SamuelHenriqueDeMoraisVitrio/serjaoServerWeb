@@ -20,8 +20,11 @@
     <meta name="twitter:image" content="https://www.meusite.com/img/logo.png">
     -->
     <title>SerjaoBerranteiroServer</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+    <div id="container">
 
     <h1 id="title">Framework Serjão Berranteiro Server</h1>
     <h1 id="serj-o-berranteiro-server-documentation">Serjão Berranteiro Server Documentation</h1>
@@ -39,16 +42,14 @@
     <h3 id="the-simplest-way-to-use-the-lib-in-your-code-is-">The simplest way to use the lib in your code is:</h3>
     <p>Go to the repository <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer">SerjaoBerranteiroServer</a> and download the latest .zip file posted in <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/releases">Realeses/Lançamentos</a>.</p>
     <p>Place the unzipped file inside the directory where your .lua file is located. After that, finish by calling a requirement within your Lua code.</p>
-    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"Path to serjao_berranteiro directory/serjao_berranteiro"</span>)
-</code></pre>
+    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"Path to serjao_berranteiro directory/serjao_berranteiro"</span>)</code></pre>
     <p>Now you can use all the functionalities of the SerjaoBerranteiroServer.</p>
     <p>A simple way to install this dll for your project is:</p>
     <ul>
-        <li>First, in the terminal, enter your project directory.</li>
-        <li>Then copy this command:<pre><code class="lang-bash">curl -L -o serjao_berranteiro.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/SamuelHenriqueDeMoraisVitrio/</span>SerjaoBerranteiroServer<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/V2/</span>serjao_server.zip &amp;&amp; unzip serjao_berranteiro.zip &amp;&amp; rm serjao_berranteiro.zip
-</code></pre>
-        </li>
+    <li>First, in the terminal, enter your project directory.</li>
     </ul>
+    Then copy this command:
+    <pre><code class="lang-bash">curl -L -o serjao_berranteiro.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/SamuelHenriqueDeMoraisVitrio/</span>SerjaoBerranteiroServer<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/V2/</span>serjao_server.zip &amp;&amp; unzip serjao_berranteiro.zip &amp;&amp; rm serjao_berranteiro.zip</code></pre>
     <hr>
     <h2 id="starting-a-server">Starting a server</h2>
     <p>With this functionality you can develop your own server normally used for developing &quot;APIs&quot;.</p>
@@ -987,5 +988,6 @@ serjao.desktop(<span class="hljs-string">"chromium-browser"</span>, teste,<span 
     <p>Pressing the button a second time
         <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-57-14.png?raw=true" alt="Exemple image3"></p>
 
+    </div>
 </body>
 </html>

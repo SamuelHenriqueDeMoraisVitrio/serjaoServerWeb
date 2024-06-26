@@ -1,7 +1,7 @@
 local serjao = require("serjao_berranteiro/serjao_berranteiro")
 
 set_server.use_folder = true
-set_server.static_folder = "../front"
+set_server.static_folder = "../front/pages"
 
 ---@param rq Request
 local function main_server(rq)

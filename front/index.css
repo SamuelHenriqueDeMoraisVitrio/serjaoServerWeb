@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/*
+Primária: Azul Real (#007BFF) - Esta cor é vibrante e associada a confiança e tecnologia.
+Secundária: Verde Limão (#28A745) - Um toque de cor vibrante que sugere crescimento e inovação.
+Acento: Laranja Pôr do Sol (#FD7E14) - Uma cor energizante que pode ser usada para destacar informações importantes.
+Neutro Escuro: Cinza Carvão (#343A40) - Para textos e elementos que exigem contraste.
+Neutro Claro: Cinza Claro (#F8F9FA) - Para fundos e áreas que precisam ser sutis e suaves.
+Apoio: Amarelo Ouro (#FFC107) - Para alertas ou notificações.
+ */
+
+:root {
+    --color-primary: #007BFF;
+    --color-second: #28A745;
+    --color-tree: #FD7E14;
+    --color-for: #343A40;
+    --color-five: #F8F9FA;
+    --color-six: #FFC107;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-five);
+    color: var(--color-primary);
+    margin: 0;
+    padding: 0;
+}
+
+div#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+pre {
+    text-align: left;
+    background-color: var(--color-for);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 0 5%;
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.45;
+}
+
+code {
+    text-align: start;
+    background-color: var(--color-five);
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-size: 85%;
+    color: #ffffff;
+}
+
+pre code {
+    text-align: start;
+    background-color: transparent;
+    padding: 0;
+}
