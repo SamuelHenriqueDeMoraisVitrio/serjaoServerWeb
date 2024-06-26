@@ -8,12 +8,12 @@ g ?= ""
 gt ?= ""
 
 teste: clear
-	@cd /home/samuel/Documentos/proc/serjaoServerWeb/back/ && $(RUN)
+	@cd /home/samuel/Documentos/proc/serjaoServerWeb/serjao_web/ && $(RUN)
 	@echo ""
 
 zip: clear
 	@rm -f serjao_web.zip
-	@zip -r serjao_web.zip back front
+	@zip -r serjao_web.zip serjao_web
 	@echo ""
 	@zip -T serjao_web.zip -v
 	@echo ""
