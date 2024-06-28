@@ -21,7 +21,7 @@ Apoio: Amarelo Ouro (#FFC107) - Para alertas ou notificações.
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: var(--color-five);
+    background-color: var(--color-for);
     color: var(--color-primary);
     margin: 0;
     padding: 0;
@@ -30,6 +30,22 @@ body {
 div#container {
     width: 80%;
     margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-five);
+}
+
+h1 {
+    text-align: center;
+}
+
+h1#title {
+    font-size: 190%;
+    color: var(--color-tree);
+    text-decoration: underline;
+}
+
+h1#serj-o-berranteiro-server-documentation {
+    font-size: 160%;
 }
 
 pre {
@@ -37,7 +53,7 @@ pre {
     background-color: var(--color-for);
     border: 1px solid #ddd;
     border-radius: 10px;
-    margin: 0 5%;
+    margin: 20px 2%;
     padding: 16px;
     overflow: auto;
     line-height: 1.45;
@@ -56,4 +72,131 @@ pre code {
     text-align: start;
     background-color: transparent;
     padding: 0;
+}
+
+/* Estilos para diferentes partes do código Lua */
+.lua .hljs {
+    color: inherit; /* Cor padrão do texto */
+}
+
+.lua .hljs-keyword {
+    color: #ff79c6; /* Cor para palavras-chave */
+}
+
+.lua .hljs-built_in {
+    color: #ff79c6; /* Cor para funções e built-ins */
+}
+
+.lua .hljs-literal {
+    color: #bd93f9; /* Cor para literais */
+}
+
+.lua .hljs-function {
+    color: #50fa7b; /* Cor para definições de função */
+}
+
+.lua .hljs-comment {
+    color: #6272a4; /* Cor para comentários */
+}
+
+.lua .hljs-string {
+    color: #f1fa8c; /* Cor para strings */
+}
+
+.lua .hljs-title {
+    color: #bd93f9; /* Cor para títulos */
+}
+
+.lua .hljs-variable,
+.lua .hljs-params {
+    color: #ffb86c; /* Cor para variáveis e parâmetros */
+}
+
+/*
+img {
+    max-width: 80%;
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+
+    border: 10px, solid, var(--color-primary);
+    border-radius: 12px;
+}
+*/
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+/*
+.image-wrapper:hover img {
+    transform: scale(1.1);
+}
+*/
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 97%;
+    height: 97%;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.5em;
+}
+
+.image-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+/*
+thead {
+    background-color: #E9ECEF;
+}
+*/
+th {
+    background-color: #E9ECEF;
+    color: var(--color-primary);
+    padding: 8px;
+    text-align: left;
+    border: 1px solid var(--color-primary);
+}
+
+td {
+    background-color: #F8F9FA;
+    color: var(--color-for);
+    padding: 8px;
+    text-align: left;
+    border: 1px solid var(--color-primary);
+
 }

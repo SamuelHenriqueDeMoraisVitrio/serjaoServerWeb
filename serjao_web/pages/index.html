@@ -21,8 +21,9 @@
     -->
     <title>SerjaoBerranteiroServer</title>
 
-
     <link rel="stylesheet" href="static/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
 
@@ -44,19 +45,22 @@
     <h3 id="the-simplest-way-to-use-the-lib-in-your-code-is-">The simplest way to use the lib in your code is:</h3>
     <p>Go to the repository <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer">SerjaoBerranteiroServer</a> and download the latest .zip file posted in <a href="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/releases">Realeses/Lançamentos</a>.</p>
     <p>Place the unzipped file inside the directory where your .lua file is located. After that, finish by calling a requirement within your Lua code.</p>
-    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"Path to serjao_berranteiro directory/serjao_berranteiro"</span>)</code></pre>
+    <pre><code class="lua">
+        local serjao = require("Path to serjao_berranteiro directory/serjao_berranteiro")
+    </code></pre>
     <p>Now you can use all the functionalities of the SerjaoBerranteiroServer.</p>
     <p>A simple way to install this dll for your project is:</p>
     <ul>
     <li>First, in the terminal, enter your project directory.</li>
     </ul>
     Then copy this command:
-    <pre><code class="lang-bash">curl -L -o serjao_berranteiro.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/SamuelHenriqueDeMoraisVitrio/</span>SerjaoBerranteiroServer<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/V2/</span>serjao_server.zip &amp;&amp; unzip serjao_berranteiro.zip &amp;&amp; rm serjao_berranteiro.zip</code></pre>
+    <pre><code class="bash">curl -L -o serjao_berranteiro.zip https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/SamuelHenriqueDeMoraisVitrio/</span>SerjaoBerranteiroServer<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/V2/</span>serjao_server.zip &amp;&amp; unzip serjao_berranteiro.zip &amp;&amp; rm serjao_berranteiro.zip</code></pre>
     <hr>
     <h2 id="starting-a-server">Starting a server</h2>
     <p>With this functionality you can develop your own server normally used for developing &quot;APIs&quot;.</p>
     <h3 id="the-server-function-allows-you-to-start-your-server">The server function allows you to start your server</h3>
     <h4 id="parameters-">Parameters:</h4>
+        <div class="table-wrapper">
     <table>
         <thead>
         <tr>
@@ -79,7 +83,9 @@
         </tr>
         </tbody>
     </table>
+        </div>
     <h5 id="or">OR</h5>
+            <div class="table-wrapper">
     <table>
         <thead>
         <tr>
@@ -98,13 +104,14 @@
         </tr>
         </tbody>
     </table>
+        </div>
     <h5 id="ports">Ports</h5>
     <p>Before starting the process, an automatic check of the starting port is performed.
         If it does not work,
         the lib will increment a number and test again until it works or until the port is greater than the ending port.</p>
     <h5 id="callback">Callback</h5>
     <p>The third parameter will call the function you created that will handle your server.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
 
@@ -115,7 +122,7 @@
 serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">5000</span>, whatever_name)
 </code></pre>
     <p>By placing only the first port and the callback in the second parameter, you are telling the server that it only wants to run if it is on that port.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
 
@@ -130,7 +137,8 @@ serjao.server(<span class="hljs-number">3000</span>, whatever_name)
     <p>With desktop functionality you can develop your own local application, such as “VScode” or “Postman”.</p>
     <h3 id="the-desktop-function-allows-you-to-start-the-appserver">The desktop function allows you to start the appServer</h3>
     <h4 id="parameters-">Parameters:</h4>
-    <table>
+        <div class="table-wrapper">
+        <table>
         <thead>
         <tr>
             <th>Port number</th>
@@ -156,6 +164,7 @@ serjao.server(<span class="hljs-number">3000</span>, whatever_name)
         </tr>
         </tbody>
     </table>
+        </div>
     <h5 id="calback">Calback</h5>
     <p>The third parameter will call the function you created that will handle your server.</p>
     <h5 id="resolutions">resolutions</h5>
@@ -168,28 +177,30 @@ serjao.server(<span class="hljs-number">3000</span>, whatever_name)
     <p>This parameter requires a string of your preferred browser.
         PS: Recommended to install chromium-browser</p>
     <h6 id="apt">APT</h6>
-    <pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> chromium-browser
+    <pre><code class="bash">sudo apt <span class="hljs-keyword">install</span> chromium-browser
 </code></pre>
     <h6 id="dnf">DNF</h6>
-    <pre><code class="lang-bash">sudo dnf <span class="hljs-keyword">install</span> chromium-browser
+    <pre><code class="bash">sudo dnf <span class="hljs-keyword">install</span> chromium-browser
 </code></pre>
     <h5 id="calback-">Calback:</h5>
     <p>This parameter works the same way as in server.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> srj = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua">
+        local srj = require("serjao_berranteiro/serjao_berranteiro")
 
-<span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatever_name</span><span class="hljs-params">()</span></span>
+        local function whatever_name()
 
-  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Word"</span>
+        return "Hello Word"
 
-<span class="hljs-keyword">end</span>
+        end
 
-srj.desktop(<span class="hljs-string">"chromium"</span>, whatever_name, <span class="hljs-number">800</span>, <span class="hljs-number">400</span>)
+        srj.desktop("chromium", whatever_name, 800, 400)
 </code></pre>
     <hr>
     <h2 id="request">request</h2>
     <p>In the function you created, you can add a parameter that will handle the requests in your code.</p>
     <p>The requests are:</p>
-    <table>
+        <div class="table-wrapper">
+        <table>
         <thead>
         <tr>
             <th>requests</th>
@@ -227,9 +238,10 @@ srj.desktop(<span class="hljs-string">"chromium"</span>, whatever_name, <span cl
         </tr>
         </tbody>
     </table>
+        </div>
     <h3 id="url-method-route">URL, METHOD, ROUTE</h3>
     <p>These three requests are simple:</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> sla = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> sla = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nome_Que_quiser</span><span class="hljs-params">(request)</span></span>
 
@@ -250,7 +262,7 @@ sla.desktop(<span class="hljs-string">"chromium"</span>, nome_Que_quiser, <span 
         The first is by key, where you can search for a header or param by the key name.
         The second way is by index, returning a table that can access the key and value.
         PS: Remember that if you work with an index, Lua starts the index at number 1.</p>
-    <pre><code class="lang-lua">local srj = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua">local srj = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 local function main_server(request)
 
@@ -268,7 +280,7 @@ end
 srj.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3000</span>, main_server)
 </code></pre>
     <p>You can also look at the size of the header or params, in case you want to interact with them.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> num = <span class="hljs-number">0</span>
 set_server.single_process = <span class="hljs-keyword">true</span>;
@@ -303,7 +315,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">5
     <span class="hljs-attr">"name2"</span>: <span class="hljs-string">"henrique"</span>
 }
 </code></pre>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(request)</span></span>
 
@@ -319,7 +331,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="read_body">read_body</h3>
     <p>The read_body function also reads the body.</p>
-    <pre><code class="lang-lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-built_in">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-built_in">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span>(<span class="hljs-title">request</span>)</span>
 
@@ -338,7 +350,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
     <ul>
         <li>To make it easier to use, put this line &quot;---@param request Request&quot; in your code before the server loop function.</li>
     </ul>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 
 set_server.single_process = <span class="hljs-keyword">true</span>
@@ -356,7 +368,8 @@ serjao.server(<span class="hljs-number">3000</span>,<span class="hljs-number">40
     <p>The responses are functions that return a message to the body of your server.
         PS:.All responses, no need to enter the status_code as it defaults to 200.</p>
     <h3 id="responses-">responses:</h3>
-    <table>
+        <div class="table-wrapper">
+        <table>
         <thead>
         <tr>
             <th>Name</th>
@@ -406,9 +419,10 @@ serjao.server(<span class="hljs-number">3000</span>,<span class="hljs-number">40
         </tr>
         </tbody>
     </table>
+        </div>
     <h4 id="minimum-responses">Minimum responses</h4>
     <p>In all responses that do not use the send function, such as &#39;html&#39;, &#39;string or &#39;json&#39;, you have the option of placing &#39;status_code&#39; as a second return. If you do not enter the second return, it will be taken as default 200.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-comment">---@param rq Request</span>
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
@@ -425,7 +439,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="send_text">send_text</h3>
     <p>This function is used to send a message with the status code of this return.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
 
@@ -437,7 +451,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3003</span>, main_server)
 </code></pre>
     <p>You can do it like this too. The only change is that there is no option to choose the status_code, as it defaults to 200.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
 
@@ -450,7 +464,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="send_json_string">send_json_string</h3>
     <p>This function is used to send a JSON to the body via a string.</p>
-    <pre><code class="lang-lua">local serjao = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua">local serjao = require(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 local function main_server()
 
@@ -465,7 +479,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="send_html">send_html</h3>
     <p>This function is used to send HTML to the body via a string.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
 
@@ -487,7 +501,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
     <h3 id="send_file">send_file</h3>
     <p>This function is used to send a file to the body.
         The first parameter is the file path, and the third parameter is optional but recommended, which is the content type of your file.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
   <span class="hljs-keyword">return</span> serjao.send_file(<span class="hljs-string">"Captura de tela de 2024-06-01 14-38-38.png"</span>, <span class="hljs-number">200</span>, <span class="hljs-string">"image/png"</span>)
@@ -497,7 +511,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="send_json">send_json</h3>
     <p>This function sends a JSON to the body by receiving a JSON table.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">(rq)</span></span>
   <span class="hljs-keyword">local</span> json = {
@@ -516,7 +530,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 serjao.server(<span class="hljs-number">3000</span>, main_server)
 </code></pre>
     <p>This function also accepts strings, booleans, and numbers.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
 
@@ -528,7 +542,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
     <h3 id="send_raw">send_raw</h3>
     <p>This function sends anything, like a PNG, binary, or zip.
         The second parameter is the content type.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> sla = <span class="hljs-built_in">io</span>.open(<span class="hljs-string">"Captura de tela de 2024-06-01 14-38-38.png"</span>, <span class="hljs-string">"rb"</span>)
 <span class="hljs-keyword">local</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main_server</span><span class="hljs-params">()</span></span>
@@ -540,7 +554,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="kill">kill</h3>
     <p>This function only works in a single process, it kills the server.</p>
-    <pre><code class="lang-lua">local serjao = require("serjao_berranteiro/serjao_berranteiro")
+    <pre><code class="lua">local serjao = require("serjao_berranteiro/serjao_berranteiro")
 
 
 set_server.single_process = true
@@ -563,7 +577,8 @@ serjao.desktop("chromium", teste)
     <h2 id="set_server">set_server</h2>
     <p>This set_server is used to make pre-configurations on your server.</p>
     <h3 id="todos-set_servers">Todos set_servers</h3>
-    <table>
+        <div class="table-wrapper">
+        <table>
         <thead>
         <tr>
             <th>name</th>
@@ -619,9 +634,10 @@ serjao.desktop("chromium", teste)
         </tr>
         </tbody>
     </table>
+            </div>
     <h3 id="nullterminator">nullterminator</h3>
     <p>This config is used to set the null string of the JSON</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 set_server.nullterminator = <span class="hljs-string">"nil"</span>
 
@@ -640,7 +656,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
     <h3 id="single_process">single_process</h3>
     <p>This config determines whether the <strong>&quot;server&quot;</strong> will be “single” or multiprocess.
         PS: Essa configuração sempre estará ativa no modo “desktop”, mas de resto ele ficará desativado como padrão.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 set_server.single_process = <span class="hljs-keyword">true</span>
 
@@ -652,7 +668,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="use_folder">use_folder</h3>
     <p>Sets a default folder.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 set_server.use_folder = <span class="hljs-keyword">false</span>
 
@@ -664,7 +680,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
 </code></pre>
     <h3 id="static_folder">static_folder</h3>
     <p>Set the name of the default folder.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 set_server.use_folder = <span class="hljs-keyword">true</span>
 set_server.static_folder = <span class="hljs-string">"sla"</span>
@@ -678,6 +694,7 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
     <hr>
     <h2 id="html-engine">HTML engine</h2>
     <p>There is an engine to work with HTML within the code itself.<br>We already have defined functions, several functions for each HTML feature that end with &quot;&lt;/...&gt;&quot;.</p>
+        <div class="table-wrapper">
     <table>
         <thead>
         <tr>
@@ -815,7 +832,8 @@ serjao.server(<span class="hljs-number">3000</span>, <span class="hljs-number">3
         </tr>
         </tbody>
     </table>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+        </div>
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 
 set_server.single_process = <span class="hljs-keyword">true</span>
@@ -844,7 +862,7 @@ set_server.single_process = <span class="hljs-keyword">true</span>
 serjao.desktop(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-keyword">nil</span>, <span class="hljs-number">1000</span>)
 </code></pre>
     <p>To print this html as a string, use the &quot;render()&quot; function.</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 
 set_server.single_process = <span class="hljs-keyword">true</span>
@@ -874,7 +892,7 @@ set_server.single_process = <span class="hljs-keyword">true</span>
 serjao.desktop(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-number">800</span>)
 </code></pre>
     <p>To add raw code to HTML, use the &quot;fragment()&quot; function.</p>
-    <pre><code class="lang-lua">
+    <pre><code class="lua">
 local serjao = require("serjao_berranteiro/serjao_berranteiro")
 
 local html = serjao.fragment("<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>",
@@ -893,7 +911,7 @@ local html = serjao.fragment("<span class="hljs-meta">&lt;!DOCTYPE html&gt;</spa
 print(html.render())
 </code></pre>
     <p>Now, if you want to put some HTML command that is not standard in the engine, it&#39;s simple:</p>
-    <pre><code class="lang-lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 
 set_server.single_process = <span class="hljs-keyword">true</span>
@@ -925,7 +943,7 @@ local <span class="hljs-function"><span class="hljs-keyword">function</span> <sp
 <span class="hljs-title">serjao</span>.<span class="hljs-title">desktop</span><span class="hljs-params">(<span class="hljs-string">"chromium"</span>, teste, <span class="hljs-number">800</span>)</span></span>
 </code></pre>
     <p>And to put options inside these functions with id class etc. use objects.</p>
-    <pre><code class="lang-lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua">local serjao = <span class="hljs-keyword">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 local <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">teste</span><span class="hljs-params">()</span>
 
@@ -945,7 +963,7 @@ local <span class="hljs-function"><span class="hljs-keyword">function</span> <sp
 </code></pre>
     <hr>
     <p>An example of using the engine:<br>PS:.In this example, htmx is being used</p>
-    <pre><code class="lang-lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
+    <pre><code class="lua"><span class="hljs-keyword">local</span> serjao = <span class="hljs-built_in">require</span>(<span class="hljs-string">"serjao_berranteiro/serjao_berranteiro"</span>)
 
 <span class="hljs-keyword">local</span> num = <span class="hljs-number">0</span>
 
@@ -982,13 +1000,40 @@ local <span class="hljs-function"><span class="hljs-keyword">function</span> <sp
 
 serjao.desktop(<span class="hljs-string">"chromium-browser"</span>, teste,<span class="hljs-number">600</span>)
 </code></pre>
+
     <hr>
+    <!--
     <p>init
         <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-56-53.png?raw=true" alt="Example image"></p>
     <p>Pressing the button 1 time
         <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-57-02.png?raw=true" alt="Exemple image2"></p>
     <p>Pressing the button a second time
         <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-57-14.png?raw=true" alt="Exemple image3"></p>
+
+    -->
+        <div class="image-container">
+            <p>Init</p>
+            <div class="image-wrapper">
+                <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-56-53.png?raw=true" alt="Example image">
+                <div class="overlay">Init</div>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <p>Pressing the button 1 time</p>
+            <div class="image-wrapper">
+                <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-57-02.png?raw=true" alt="Example image2">
+                <div class="overlay">Pressing the button 1 time</div>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <p>Pressing the button a second time</p>
+            <div class="image-wrapper">
+                <img src="https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/blob/main/Markdown/imgs/Captura%20de%20tela%20de%202024-06-11%2023-57-14.png?raw=true" alt="Example image3">
+                <div class="overlay">Pressing the button a second time</div>
+            </div>
+        </div>
 
     </div>
 </body>
